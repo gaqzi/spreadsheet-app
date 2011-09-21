@@ -1,0 +1,30 @@
+
+ <h1 style="margin-top: 50px;">Download the processed excel file below</h1>
+
+ <div style="margin-top: 20px;"> <%= button_to "download", :method => :get, :action => 'click' %> </div>
+
+ <% book = Spreadsheet.open 'result.xls' %>
+
+
+
+ <% sheet = book.worksheet 0  %>
+
+
+ <%	sheet.column(5).width = 30 %>
+ <%	sheet.column(10).width = 30 %>
+ <%	sheet.column(12).width = 30 %>
+ <%	sheet.column(0).hidden = true %>
+ <%	sheet.column(1).hidden = true %>
+ <%	sheet.column(2).hidden = true %>
+ <%	sheet.column(3).hidden = true %>
+ <%	sheet.column(4).hidden = true %>
+ <%	sheet.column(6).hidden = true %>
+ <%	sheet.column(7).hidden = true %>
+ <% sheet.column(8).hidden = true %>
+ <%	sheet.column(9).hidden = true %>
+ <%	sheet.column(11).hidden = true %>
+
+ <% format = Spreadsheet::Format.new %>
+ <% sheet.row(2).default_format = format %>
+
+     <% book.write 'excel-file.xls'    %>
