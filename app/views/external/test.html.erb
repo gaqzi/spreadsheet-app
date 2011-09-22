@@ -24,6 +24,14 @@
  <%	sheet.column(9).hidden = true %>
  <%	sheet.column(11).hidden = true %>
 
+<% sheet.column(5).each do |column|%>
+<% column.to_s.split(';')[0] %>
+ <% end %>
+
+ <% sheet.column(10).each do |column| %>
+ <% column.to_s.split(';')[-1].tr('()',  '') %>
+ <% end %>
+
  <% format = Spreadsheet::Format.new %>
  <% sheet.row(2).default_format = format %>
 
